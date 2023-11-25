@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>URL Shortner</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <h1>URL Shortner</h1>
+        <form action="/ShortUrls" method="POST" class="my-4 form-inline">
+            <label for="url" class="sr-only">URL</label>
+            <input type="url" name="url" id="url" placeholder="URL" class="form-control col mr-2" required>
+            <button type="submit" class="btn btn-success">Shorten URL</button>
+        </form>
+        <div class="table-responsive">
+
+            <table class="table table-striped w-100 table-bordered">
+                <thead class="w-100">
+                    <th>URL</th>
+                    <th>Shorten URL</th>
+                    <th>Clicks</th>
+                </thead>
+                <tbody class="w-100">
+                    <% shortUrls.forEach(url=> { %>
+                        <tr>
+                            <td><a href="<%= url.url %>">
+                                    <%= url.url %>
+                                </a></td>
+                            <td><a href="<%= url.short %>">
+                                    <%= url.short %>
+                                </a></td>
+                            <td>
+                                <%= url.clicks%>
+                            </td>
+                        </tr>
+
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
